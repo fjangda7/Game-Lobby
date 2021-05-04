@@ -3,7 +3,6 @@ import styles from '../App.module.css';
 
 const Player = ({colors, playerNumber, onDelete, onChange}) => {
 
-
     return (
         <div className={styles.player}>
             <h1 style={{textAlign: 'center'}}>Player {playerNumber}</h1>

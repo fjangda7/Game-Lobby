@@ -35,17 +35,32 @@ function App() {
   const [p4background,p4setbackground] = useState('white');
   const setBackground = (text, playerKey) => {
 
-      switch(playerKey) {
-        case 1:
-          return p1setbackground(text);
-        case 2:
-          return p2setbackground(text);
-        case 3:
-          return p3setbackground(text);
-        case 4:
-          return p4setbackground(text);
-        default: break;
-      }
+    var newColor; 
+
+    if (text === 'red'){
+      newColor = '#ffbfbf';
+    }
+    else if (text === 'blue'){
+      newColor = '#bfebff';
+    }
+    else if (text === 'green'){
+      newColor = '#c8ffbd';
+    }
+    else {
+      newColor = '#f5f1b8';
+    }
+
+    switch(playerKey) {
+      case 1:
+        return p1setbackground(newColor);
+      case 2:
+        return p2setbackground(newColor);
+      case 3:
+        return p3setbackground(newColor);
+      case 4:
+        return p4setbackground(newColor);
+      default: break;
+    }
   }
 
   return (

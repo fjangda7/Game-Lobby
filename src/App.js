@@ -4,6 +4,9 @@ import Header from './components/Header'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from 'react'
 
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+
 function App() {
 
   const [colors, setColors] = useState([
@@ -64,29 +67,39 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className={styles.container}>
+    <Container className="App">
+      <Container maxWidth="lg" className={styles.container}>
         <Header />
-        <div className="row">
-          <div className={styles.player_container} style={{backgroundColor: p1background}}>
+        <Grid container spacing={3} justify="center">
+          <Grid item xs={4} sm={5} maxWidth="xs" className={styles.player_container} style={{backgroundColor: p1background}}>
             <Player playerNumber={1} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
-          </div>
-          <div className={styles.player_container} style={{backgroundColor: p2background}}>
+          </Grid>
+          <Grid item xs={3} sm={1}></Grid>
+          <Grid item xs={4} sm={5}  maxWidth="xs"  className={styles.player_container} style={{backgroundColor: p2background}}>
             <Player playerNumber={2} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
 
-        <div className="row">
-          <div className={styles.player_container} style={{backgroundColor: p3background}}>
+        <Grid container spacing = {4}>
+          <Grid item>
+            <p style={{color:'white'}}> kjfddlkjfd</p>
+          </Grid>
+        </Grid>
+
+
+        <Grid container spacing = {3} justify="center">
+          <Grid item xs={4} sm={5} maxWidth="xs" className={styles.player_container} style={{backgroundColor: p3background}}>
             <Player playerNumber={3} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
-          </div>
-          <div className={styles.player_container} style={{backgroundColor: p4background}}>
+          </Grid>
+          <Grid item xs={3} sm={1}></Grid>
+          <Grid item xs={4} sm={5}  maxWidth="xs"  className={styles.player_container} style={{backgroundColor: p4background}}>
             <Player playerNumber={4} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
 
-      </div>
-    </div>
+
+      </Container>
+    </Container>
   );
 }
 

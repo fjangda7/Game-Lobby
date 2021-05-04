@@ -6,7 +6,8 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid'
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 const DropdownMenu = ({colors, onDelete, onChange, playerKey}) => {
 
@@ -65,7 +66,7 @@ const DropdownMenu = ({colors, onDelete, onChange, playerKey}) => {
       }))(MenuItem);
 
     return (
-        <div className={styles.dropdownmenu}>
+        <Container className={styles.dropdownmenu}>
             <Grid
             justify="center"
             >
@@ -74,7 +75,7 @@ const DropdownMenu = ({colors, onDelete, onChange, playerKey}) => {
                     aria-haspopup="true"
                     variant="contained"
                     onClick={handleClick2}
-                    style={{backgroundColor: "#212121", color:'white'}}
+                    style={{backgroundColor: "#212121", color:'white', justify:"center", }}
                 >
                 {value}
                 </Button>
@@ -93,7 +94,7 @@ const DropdownMenu = ({colors, onDelete, onChange, playerKey}) => {
                     ))}
                 </StyledMenu>
             </Grid>
-        </div>
+        </Container>
     )
 }
 

@@ -1,8 +1,11 @@
+
+import Container from '@material-ui/core/Container';
+
 const Header = () => {
     return (
-        <div>
+        <Container style={{marginBottom:50}}>
             <h1 style={{textAlign: 'center'}}>Game Lobby</h1>
-        </div>
+        </Container>
     )
 }
 

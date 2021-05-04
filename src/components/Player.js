@@ -1,13 +1,13 @@
 import DropdownMenu from './DropdownMenu'
-import styles from '../App.module.css';
+import Container from '@material-ui/core/Container';
 
 const Player = ({colors, playerNumber, onDelete, onChange}) => {
 
     return (
-        <div className={styles.player}>
+        <Container style={{padding: 10,}}>
             <h1 style={{textAlign: 'center'}}>Player {playerNumber}</h1>
             <DropdownMenu key={playerNumber} playerKey={playerNumber} colors={colors} onDelete={onDelete} onChange={onChange}/>
-        </div>
+        </Container>
     )
 }
 

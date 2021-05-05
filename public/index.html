@@ -4,41 +4,116 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Game Lobby</title>
   </head>
-  <body>
+  <body class="grey lighten-3">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <!-- NAVBAR -->
+    <nav class="z-depth-99 white lighten-4">
+      <div class="nav-wrapper container">
+        <ul id="nav-mobile" class="right">
+            <li class="logged-in" style="display: block;">
+              <a href="#" class="grey-text text-darken-4 modal-trigger" data-target="modal-account">Account</a>
+            </li>
+            <li class="logged-in" style="display: block;">
+              <a href="#" class="grey-text text-darken-4" id="logout">Logout</a>
+            </li>
+            <li class="logged-out" style="display: block;">
+              <a href="#" class="grey-text text-darken-4 modal-trigger" data-target="modal-login">Login</a>
+            </li>
+            <li class="logged-out" style="display: block;">
+              <a href="#" class="grey-text text-darken-4 modal-trigger" data-target="modal-signup">Sign up</a>
+            </li>
+          </span>
+        </ul>
+      </div>
+    </nav>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal" style="width: 500px; height: 300px;">
+      <div class="modal-content">
+        <h4>Sign up</h4><br />
+        <form id="signup-form">
+          <div class="input-field">
+            <input type="email" id="signup-email" required />
+            <label for="signup-email">Email address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="signup-password" required />
+            <label for="signup-password">Choose password</label>
+          </div>
+          <button class="btn white-text grey darken-4 z-depth-0">Sign up</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal" style="width: 500px; height: 300px;">
+      <div class="modal-content">
+        <h4>Login</h4><br />
+        <form id="login-form">
+          <div class="input-field">
+            <input type="email" id="login-email" required />
+            <label for="login-email">Email address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="login-password" required />
+            <label for="login-password">Your password</label>
+          </div>
+          <button class="btn white-text grey darken-4 z-depth-0">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal" style="width: 500px; height: 100px;">
+      <div class="modal-content center-align">
+        <h4>Account details</h4><br />
+        <div class="account-details"></div>
+      </div>
+    </div>
+
+    <!-- GAME LOBBY -->
+    <div id="root" class="reactApp logged-in" style="display: none;"></div>
+    <div class="reactApp logged-out" style="display: none;">
+      <h2 class="center-align text-blue-grey darken-4" style="margin: 50px; ">Login to view the Game Lobby.</h2>
+    </div>
+
+    <!--SCRIPTS-->
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCwSjmvqJ8V8vnLFb9Fp2UbjCS0mW_-Cb8",
+        authDomain: "game-lobby-f44be.firebaseapp.com",
+        projectId: "game-lobby-f44be",
+        storageBucket: "game-lobby-f44be.appspot.com",
+        messagingSenderId: "446708373517",
+        appId: "1:446708373517:web:b3a6c6bbab6297b0e29d44"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth(); 
+      const db = firebase.firestore(); 
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
+    
   </body>
 
   

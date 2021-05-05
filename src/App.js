@@ -1,3 +1,4 @@
+import React from "react";
 import styles from './App.module.css';
 import Player from './components/Player'
 import Header from './components/Header'
@@ -71,11 +72,11 @@ function App() {
       <Container maxWidth="lg" className={styles.container}>
         <Header />
         <Grid container spacing={3} justify="center">
-          <Grid item xs={4} sm={5} maxWidth="xs" className={styles.player_container} style={{backgroundColor: p1background}}>
+          <Grid item xs={4} sm={5} className={styles.player_container} style={{backgroundColor: p1background}}>
             <Player playerNumber={1} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
           </Grid>
           <Grid item xs={3} sm={1}></Grid>
-          <Grid item xs={4} sm={5}  maxWidth="xs"  className={styles.player_container} style={{backgroundColor: p2background}}>
+          <Grid item xs={4} sm={5}   className={styles.player_container} style={{backgroundColor: p2background}}>
             <Player playerNumber={2} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
           </Grid>
         </Grid>
@@ -88,11 +89,11 @@ function App() {
 
 
         <Grid container spacing = {3} justify="center">
-          <Grid item xs={4} sm={5} maxWidth="xs" className={styles.player_container} style={{backgroundColor: p3background}}>
+          <Grid item xs={4} sm={5} className={styles.player_container} style={{backgroundColor: p3background}}>
             <Player playerNumber={3} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
           </Grid>
           <Grid item xs={3} sm={1}></Grid>
-          <Grid item xs={4} sm={5}  maxWidth="xs"  className={styles.player_container} style={{backgroundColor: p4background}}>
+          <Grid item xs={4} sm={5}   className={styles.player_container} style={{backgroundColor: p4background}}>
             <Player playerNumber={4} colors={colors} onDelete = {deleteColor} onChange={setBackground}/>
           </Grid>
         </Grid>

@@ -42,9 +42,8 @@ body {
 
 .dropdownmenu {
   display: flex; 
-  align-items: center;
-  padding-left: 30pt;
   margin-top: 45pt; 
+  padding-left: 30%;
 }
 
 

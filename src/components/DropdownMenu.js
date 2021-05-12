@@ -1,5 +1,4 @@
 import React from 'react'
-import {useState} from 'react'
 import styles from '../App.module.css';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -9,18 +8,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
-const DropdownMenu = ({colors, onDelete, onChange, playerKey}) => {
+const DropdownMenu = ({colors, onDelete, onChange, playerKey, onClick, clickValue, updatePlayer}) => {
 
-    const [value, setValue] = useState('Choose Colour');
-
-    const handleClick = (text) => {
-        setValue(text);
-    }
-
-    const doAll = (id, text, playerKey) => {
-        onDelete(id);
+    const doAll = (text, playerKey) => {
+        onDelete(text);
         onChange(text, playerKey);
-        handleClick(text);
+        onClick(text, playerKey);
+        updatePlayer(text, playerKey);
     }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -77,10 +71,11 @@ const DropdownMenu = ({colors, onDelete, onChange, playerKey}) => {
                     onClick={handleClick2}
                     style={{backgroundColor: "#212121", color:'white', justify:"center", }}
                 >
-                {value}
+                {clickValue}
                 </Button>
                 <StyledMenu
-                    id="customized-menu"
+                    class="customized-menu"
+                    id={playerKey}
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
@@ -89,7 +84,7 @@ const DropdownMenu = ({colors, onDelete, onChange, playerKey}) => {
                 >
                     {colors.map((color) => ( 
                         <StyledMenuItem onClick={handleClose}>
-                            <ListItemText><div key={color.id} style={{textTransform: 'capitalize'}} onClick={() => {doAll(color.id, color.text, playerKey)}} >{color.text}</div></ListItemText>
+                            <ListItemText><div key={color.id} style={{textTransform: 'capitalize'}} onClick={() => {doAll(color.text, playerKey)}} >{color.text}</div></ListItemText>
                         </StyledMenuItem>
                     ))}
                 </StyledMenu>

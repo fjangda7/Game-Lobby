@@ -23,7 +23,7 @@
       <div class="nav-wrapper container">
         <ul id="nav-mobile" class="right">
             <li class="logged-in" style="display: block;">
-              <a href="#" class="grey-text text-darken-4 modal-trigger" data-target="modal-account">Account</a>
+              <a href="#" class="grey-text text-darken-4 modal-trigger" data-target="modal-account">Profile</a>
             </li>
             <li class="logged-in" style="display: block;">
               <a href="#" class="grey-text text-darken-4" id="logout">Logout</a>
@@ -75,11 +75,21 @@
       </div>
     </div>
 
-    <!-- ACCOUNT MODAL -->
-    <div id="modal-account" class="modal" style="width: 500px; height: 100px;">
+    <!-- UPLOAD DP MODAL -->
+    <div id="modal-account" class="modal" style="width: 500px; height: 450px;">
       <div class="modal-content center-align">
-        <h4>Account details</h4><br />
-        <div class="account-details"></div>
+        <h4>Upload Profile Pic</h4><br/>
+        <form id="dp-form">
+          <div class="input-field">
+            <input type="file" id="photo" onchange='chooseFile(event)'>
+          </div>
+          <img id="image"/>
+          <button class="btn white-text grey darken-4 z-depth-0">Upload Image</button>
+        </form>
+        <br/>
+        <div class="account-details" id="dp"></div>
+        <br/>
+        <img src = 'https://via.placeholder.com/150' class='image center-align' id="img" style="width: 150px; height: 150px; margin-left: 150px;;"/>
       </div>
     </div>
 
@@ -94,6 +104,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
 
     <script>
       var firebaseConfig = {
@@ -109,6 +120,30 @@
       firebase.firestore().settings({timestampsInSnapshots: true});
       const auth = firebase.auth(); 
       const db = firebase.firestore(); 
+      const storage = firebase.storage();
+
+      /*
+      function uploadImage(){
+          const user = firebase.auth().currentUser; 
+          const file = document.querySelector('#photo').files[0]
+          const ref = firebase.storage().ref(user + '/profilePicture/' + file.name)
+          const name = new Date() + '-' + file.name
+          const metaDeta = {
+            contentType: file.type
+          }
+          const task = ref.child(name).put(file, metaDeta)
+          task
+          .then(snapshot => snapshot.ref.getDownloadURL())
+          .then(url => {
+            console.log(url)
+            alert("image uploaded successfully")
+            photoURL = user.photoURL
+            const image = document.querySelector('#image')
+            image.src = photoURL
+            document.getElementById('dp').innerHTML = photoURL; 
+          })
+      }
+      */
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

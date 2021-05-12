@@ -35,7 +35,7 @@ function App(props) {
   ])
 
   const deleteColor = (text) => {
-    setColors(colors.filter((color) => color.text !== text))
+    setColors(colors.filter((color) => color.text !== text));
   }
   
   const [value1, setValue1] = useState('Choose Colour');
@@ -56,21 +56,6 @@ function App(props) {
         return setValue4(text);
       default: break;
     }
-  }
-
-  const resetScreen = ({players}) => {
-    players.forEach(player => {
-      for (let key of Object.keys(player)) {
-        var playerColour = player[key];
-        var playerKey = parseInt(key, 10);
-        if (playerColour === "red" || playerColour === "green" || playerColour === "yellow" || playerColour === "blue"){
-          setBackground(playerColour, playerKey);
-          deleteColor(playerColour);
-          setValue(playerColour, playerKey);
-        }
-
-      }
-    })
   }
 
   const [p1background,p1setbackground] = useState('white');
@@ -104,6 +89,21 @@ function App(props) {
         return p4setbackground(newColor);
       default: break;
     }
+  }
+
+  const resetScreen = ({players}) => {
+    players.forEach(player => {
+      for (let key of Object.keys(player)) {
+        var playerColour = player[key];
+        var playerKey = parseInt(key, 10);
+        if (playerColour === "red" || playerColour === "green" || playerColour === "yellow" || playerColour === "blue"){
+          setBackground(playerColour, playerKey);
+          deleteColor(playerColour);
+          setValue(playerColour, playerKey);
+        }
+
+      }
+    })
   }
 
   const {players} = props; 

@@ -110,7 +110,6 @@ function App(props) {
 
   useEffect(() => {
     if (players) {
-      console.log(players);
       resetScreen({players});
     }
   }, [players]);
@@ -168,7 +167,6 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
     return {
       players: state.firestore.ordered.players ? state.firestore.ordered.players : null
     }

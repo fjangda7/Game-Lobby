@@ -1,4 +1,5 @@
 const accountDetails = document.querySelector('.account-details');
+const navemail = document.querySelector('.nav-email');
 
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
@@ -14,11 +15,11 @@ auth.onAuthStateChanged(user => {
     //account info
     const html = `
       <div> Logged in as ${user.email}</div>
-
     `
     accountDetails.innerHTML = html; 
+    navemail.innerHTML = `<a href="#" class="grey-text text-darken-4"">${user.email}</a>`; 
 
-    console.log('user logged in: ', user);
+
     //db.collection('guides').get().then(snapshot => {
       setupLobby(user);
       setupUI(user);
@@ -27,7 +28,6 @@ auth.onAuthStateChanged(user => {
     //hide account info
     accountDetails.innerHTML = ''; 
 
-    console.log('user logged out');
     setupLobby();
     setupUI(); 
   }
@@ -48,11 +48,17 @@ signupForm.addEventListener('submit', (e) => {
     const modal = document.querySelector('#modal-signup');
     M.Modal.getInstance(modal).close();
     signupForm.reset();
+    signupForm.querySelector('.error').innerHTML = ''; 
+  }).catch((err) => {
+
+    signupForm.querySelector('.error').innerHTML = err.message; 
+
   });
 });
 
 // dp
 let img = document.getElementById('img');
+let navimg = document.getElementById('nav-img');
 let file = {};
 
 function chooseFile(e) {
@@ -63,17 +69,16 @@ const dpForm = document.querySelector('#dp-form');
 dpForm.addEventListener('submit', (e) => {
   e.preventDefault();
   storage.ref('users/' + auth.currentUser.uid + '/profile.jpg').put(file).then(function () {
-    console.log('successfully uploaded');
     storage.ref('users/' + auth.currentUser.uid + '/profile.jpg').getDownloadURL().then(imgUrl => {
       img.src = imgUrl;
+      navimg.src = imgUrl; 
     }).catch(error => {
     });
   }).catch(error => {
-    console.log(error.message);
   })
 
 
-  // close the dp modal & reset form
+// close the dp modal & reset form
   const modal = document.querySelector('#modal-account');
   dpForm.reset();
 });
@@ -102,6 +107,10 @@ loginForm.addEventListener('submit', (e) => {
     const modal = document.querySelector('#modal-login');
     M.Modal.getInstance(modal).close();
     loginForm.reset();
+    loginForm.querySelector('.error').innerHTML = ''; 
+  }).catch((err) => {
+    loginForm.querySelector('.error').innerHTML = err.message; 
+
   });
 
 });

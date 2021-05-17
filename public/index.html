@@ -36,6 +36,13 @@
             </li>
           </span>
         </ul>
+        <ul id="nav-mobile" class="left">
+          <li class="logged-in btn btn-floating grey darken-3" style="display: block; margin-top: 10px; padding-left: 0; padding-top:0; ">
+            <img id="nav-img" src="https://via.placeholder.com/150" class="center-align" style="width: 40px; height: 40px;"/>          
+          </li>
+          <li class="logged-in nav-email" style="display: block;">
+          </li>
+        </ul>
       </div>
     </nav>
 
@@ -53,6 +60,7 @@
             <label for="signup-password">Choose password</label>
           </div>
           <button class="btn white-text grey darken-4 z-depth-0">Sign up</button>
+          <p class="error pink-text center-align"></p>
         </form>
       </div>
     </div>
@@ -71,6 +79,7 @@
             <label for="login-password">Your password</label>
           </div>
           <button class="btn white-text grey darken-4 z-depth-0">Login</button>
+          <p class="error pink-text center-align"></p>
         </form>
       </div>
     </div>
@@ -83,7 +92,6 @@
           <div class="input-field">
             <input type="file" id="photo" onchange='chooseFile(event)'>
           </div>
-          <img id="image"/>
           <button class="btn white-text grey darken-4 z-depth-0">Upload Image</button>
         </form>
         <br/>
@@ -122,28 +130,6 @@
       const db = firebase.firestore(); 
       const storage = firebase.storage();
 
-      /*
-      function uploadImage(){
-          const user = firebase.auth().currentUser; 
-          const file = document.querySelector('#photo').files[0]
-          const ref = firebase.storage().ref(user + '/profilePicture/' + file.name)
-          const name = new Date() + '-' + file.name
-          const metaDeta = {
-            contentType: file.type
-          }
-          const task = ref.child(name).put(file, metaDeta)
-          task
-          .then(snapshot => snapshot.ref.getDownloadURL())
-          .then(url => {
-            console.log(url)
-            alert("image uploaded successfully")
-            photoURL = user.photoURL
-            const image = document.querySelector('#image')
-            image.src = photoURL
-            document.getElementById('dp').innerHTML = photoURL; 
-          })
-      }
-      */
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
